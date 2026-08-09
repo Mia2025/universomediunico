@@ -1,0 +1,402 @@
+/* ============================================================
+   PAI RAFAEL DE MARIA PADILHA
+   Clean escuro · sem itálico · sem dourado · acento vermelho
+   ============================================================ */
+
+@font-face{font-family:"Gontserrat";src:url("fonts/gontserrat-light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Gontserrat";src:url("fonts/gontserrat-regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Gontserrat";src:url("fonts/gontserrat-medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Gontserrat";src:url("fonts/gontserrat-semibold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Gontserrat";src:url("fonts/gontserrat-bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+
+:root{
+  --bg:        #0e0d0e;
+  --bg-alt:    #131113;
+  --surface:   #191618;
+  --line:      #2a2528;
+  --text:      #eceae9;
+  --text-2:    #b7b1b0;
+  --text-3:    #837d7d;
+  --accent:    #d2352f;
+  --radius:    14px;
+  --wrap:      1160px;
+  --narrow:    720px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Gontserrat",system-ui,-apple-system,sans-serif;
+  font-weight:400;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+em,i{font-style:normal}
+
+/* ---------- tipografia ---------- */
+h1,h2,h3{
+  font-weight:400;              /* peso regular */
+  text-transform:uppercase;
+  line-height:1.15;
+  letter-spacing:.04em;
+}
+h1 b,h2 b,h3 b,.brand b,.footer b{font-weight:700}  /* uma palavra em negrito */
+h1{font-size:clamp(2.3rem,5.6vw,4.2rem)}
+h2{font-size:clamp(1.55rem,3.4vw,2.4rem);margin-bottom:1.4rem}
+h3{font-size:1.06rem;letter-spacing:.08em;margin-bottom:.55rem}
+p{color:var(--text-2)}
+h1+p,h2+p{max-width:58ch}
+
+.kicker{
+  font-size:.72rem;font-weight:600;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem;
+}
+.tag{
+  font-size:.66rem;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;
+}
+.meta{
+  font-size:.66rem;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--text-3);
+  margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line);
+}
+.lead{font-size:1.06rem;max-width:54ch}
+.note{
+  border-left:2px solid var(--accent);
+  padding:.35rem 0 .35rem 1.2rem;
+  color:var(--text-3);font-size:.94rem;max-width:62ch;
+}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
+.narrow{max-width:var(--narrow)}
+.center{text-align:center}
+.center h2+p,.center .lead{margin-left:auto;margin-right:auto}
+.section{padding:clamp(4.5rem,9vw,7.5rem) 0}
+.section.alt{background:var(--bg-alt)}
+.section p+p{margin-top:1.1rem}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;gap:2rem;
+  padding:1rem clamp(1.2rem,4vw,2.5rem);
+  background:rgba(14,13,14,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-size:.82rem;font-weight:400;letter-spacing:.18em;white-space:nowrap}
+.nav-links{display:flex;gap:1.6rem;margin-left:auto}
+.nav-links a{
+  font-size:.7rem;font-weight:500;letter-spacing:.22em;color:var(--text-2);
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--text)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-block;
+  padding:.95rem 2rem;
+  background:var(--accent);color:#fff;
+  font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  border-radius:999px;
+  transition:filter .2s,transform .2s;
+}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--text-3)}
+.btn-small{padding:.6rem 1.3rem;font-size:.66rem;margin-left:auto}
+@media(max-width:860px){.btn-small{margin-left:auto}}
+.btn-large{padding:1.1rem 2.6rem}
+.center .btn{margin-top:2.5rem}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.hero-veil{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top, rgba(14,13,14,.96) 0%, rgba(14,13,14,.55) 42%, rgba(14,13,14,.22) 70%, rgba(14,13,14,.34) 100%);
+}
+.hero-content{
+  position:relative;z-index:1;
+  max-width:var(--wrap);width:100%;margin:0 auto;
+  padding:0 clamp(1.2rem,4vw,2.5rem) clamp(4rem,8vw,6.5rem);
+}
+.hero-content h1{margin-bottom:1.2rem}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2.2rem}
+
+/* ---------- faixa brasão ---------- */
+.band{position:relative;min-height:64vh;display:flex;align-items:center;overflow:hidden}
+.band-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band-veil{position:absolute;inset:0;background:rgba(14,13,14,.78)}
+.band-content{
+  position:relative;z-index:1;width:100%;
+  text-align:center;padding:clamp(4rem,8vw,6rem) 1.5rem;
+}
+.crest{
+  width:132px;height:132px;object-fit:cover;border-radius:50%;
+  margin:0 auto 2rem;border:1px solid var(--line);
+}
+.band-content h2{margin-bottom:0}
+
+/* ---------- consultas ---------- */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.4rem;
+  margin-top:3.2rem;
+}
+@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:border-color .25s,transform .25s;
+}
+.card:hover{border-color:#443c40;transform:translateY(-3px)}
+.card-img{aspect-ratio:16/10;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-body{padding:1.5rem 1.5rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.card-body p{font-size:.94rem}
+.card-body .meta{margin-top:auto}
+
+/* ---------- trabalhos ---------- */
+.works{
+  margin-top:3rem;
+  display:grid;grid-template-columns:1fr;
+  border-top:1px solid var(--line);
+}
+.work{
+  display:grid;grid-template-columns:64px 1fr;gap:1.4rem;
+  padding:1.8rem 0;border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.work span{
+  font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  color:var(--accent);padding-top:.3rem;
+}
+.work p{font-size:.94rem;max-width:60ch}
+.works+.narrow{margin-top:2.6rem}
+
+/* ---------- depoimentos ---------- */
+.quotes{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;
+}
+@media(max-width:900px){.quotes{grid-template-columns:1fr}}
+.quotes blockquote{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:1.8rem;
+  color:var(--text-2);
+  font-size:.98rem;
+  position:relative;
+}
+.quotes blockquote::before{
+  content:"";
+  display:block;width:26px;height:2px;background:var(--accent);
+  margin-bottom:1.1rem;
+}
+
+/* ---------- contato ---------- */
+.contact-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;
+  margin-top:3rem;text-align:left;
+}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.contact-grid>div{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:1.3rem 1.4rem;
+}
+.contact-grid p:last-child{color:var(--text);font-size:.94rem}
+.social{
+  display:flex;gap:1.6rem;flex-wrap:wrap;justify-content:center;margin-top:2.6rem;
+}
+.social a{
+  font-size:.68rem;font-weight:600;letter-spacing:.22em;color:var(--text-3);
+  transition:color .2s;
+}
+.social a:hover{color:var(--text)}
+
+/* ---------- footer ---------- */
+.footer{
+  border-top:1px solid var(--line);
+  padding:3rem 1.5rem 6rem;
+  text-align:center;
+}
+.footer>p:first-child{
+  font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  font-size:.82rem;color:var(--text);margin-bottom:1rem;
+}
+.fine{font-size:.72rem;letter-spacing:.08em;color:var(--text-3)}
+.fine+.fine{margin-top:.5rem}
+.dim{opacity:.7;max-width:64ch;margin-left:auto;margin-right:auto}
+
+/* ---------- whatsapp flutuante ---------- */
+.wa-float{
+  position:fixed;right:1.3rem;bottom:1.3rem;z-index:60;
+  width:54px;height:54px;border-radius:50%;
+  background:#22b358;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 26px rgba(0,0,0,.45);
+  transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.07)}
+
+/* ---------- tarot interativo ---------- */
+.tarot-overlay{
+  position:fixed;inset:0;z-index:80;
+  background:rgba(10,9,10,.92);
+  backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1rem;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.tarot-overlay.aberto{opacity:1;pointer-events:auto}
+.tarot-caixa{
+  position:relative;
+  width:100%;max-width:820px;max-height:92vh;overflow-y:auto;
+  background:var(--bg-alt);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(2rem,5vw,3.4rem);
+  text-align:center;
+}
+.tarot-caixa h2{margin-bottom:1rem}
+.tarot-caixa>div>p, #tarot-inicio p, #tarot-mesa>p{
+  max-width:46ch;margin-left:auto;margin-right:auto;
+}
+.tarot-x{
+  position:absolute;top:.9rem;right:1.1rem;
+  background:none;border:none;color:var(--text-3);
+  font-size:1.9rem;line-height:1;cursor:pointer;
+  transition:color .2s;
+}
+.tarot-x:hover{color:var(--text)}
+
+#tarot-nome{
+  display:block;width:100%;max-width:340px;
+  margin:1.8rem auto 1.4rem;
+  padding:.95rem 1.2rem;
+  background:var(--surface);
+  border:1px solid var(--line);border-radius:10px;
+  color:var(--text);
+  font-family:inherit;font-size:1rem;letter-spacing:.02em;
+  text-align:center;outline:none;
+  transition:border-color .2s;
+}
+#tarot-nome:focus{border-color:var(--accent)}
+#tarot-nome::placeholder{color:var(--text-3)}
+
+.tarot-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:.7rem;margin-top:2rem;
+}
+@media(max-width:640px){.tarot-grid{grid-template-columns:repeat(4,1fr)}}
+.tcard{
+  aspect-ratio:2/3;
+  border:none;background:none;padding:0;cursor:pointer;
+  perspective:600px;
+  animation:tcard-in .45s both;
+}
+@keyframes tcard-in{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+.tcard-face{
+  display:block;width:100%;height:100%;
+  border-radius:9px;
+  transition:transform .25s, box-shadow .25s, border-color .25s;
+}
+.tcard-verso{
+  background:
+    radial-gradient(circle at 50% 42%, #241417 0%, #161113 68%);
+  border:1px solid #3a2c30;
+  position:relative;
+}
+.tcard-verso::after{
+  content:"";
+  position:absolute;inset:14%;
+  border:1px solid rgba(210,53,47,.4);
+  border-radius:6px;
+}
+.tcard-verso::before{
+  content:"";
+  position:absolute;left:50%;top:50%;
+  width:9px;height:9px;
+  transform:translate(-50%,-50%) rotate(45deg);
+  background:rgba(210,53,47,.55);
+}
+.tcard:hover .tcard-face{transform:translateY(-5px);border-color:#5a4046}
+.tcard.sel .tcard-face{
+  transform:translateY(-7px);
+  border-color:var(--accent);
+  box-shadow:0 0 0 1px var(--accent), 0 10px 26px rgba(0,0,0,.5);
+}
+.tcard.sel{cursor:default}
+
+#tarot-cartas-final{margin-top:2.2rem;text-align:left}
+.tleitura{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--surface);
+  padding:1.5rem 1.6rem;
+  animation:tcard-in .5s both;
+}
+.tleitura+.tleitura{margin-top:1rem}
+.tleitura p:last-child{font-size:.96rem}
+.tarot-fecho{
+  margin-top:2rem;
+  color:var(--text-3);font-size:.94rem;
+  max-width:52ch;margin-left:auto;margin-right:auto;
+}
+.tarot-acoes{
+  display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;
+  margin-top:1.8rem;
+}
+
+/* ---------- sobre com foto ---------- */
+.sobre-grid{
+  display:grid;grid-template-columns:minmax(280px,420px) 1fr;
+  gap:clamp(2rem,5vw,4.5rem);align-items:center;
+}
+@media(max-width:860px){.sobre-grid{grid-template-columns:1fr}}
+.sobre-foto{margin:0}
+.sobre-foto img{
+  width:100%;border-radius:var(--radius);
+  border:1px solid var(--line);
+}
+.sobre-texto p+p{margin-top:1.1rem}
+
+/* ---------- animação dos cards de consulta ---------- */
+.card{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .6s ease, transform .6s ease,
+             border-color .25s, box-shadow .25s;
+}
+.card.vis{opacity:1;transform:none}
+.card:hover{transform:translateY(-4px)}
+.card .meta{
+  display:flex;align-items:center;gap:.5rem;
+  transition:color .25s;
+}
+.card .meta::after{
+  content:"→";
+  font-size:.9rem;letter-spacing:0;
+  transform:translateX(0);transition:transform .25s;
+}
+.card:hover .meta{color:var(--accent)}
+.card:hover .meta::after{transform:translateX(5px)}
+@media(prefers-reduced-motion:reduce){
+  .card{opacity:1;transform:none;transition:none}
+}
